@@ -3,6 +3,8 @@ pipeline {
     
     environment {
 	    TARGET_ENV = "${params.mule_env}"
+	   
+	    BRANCH_NAME1 = "${GIT_BRANCH.split("/")[1]}"
 	    BUILD_NUMBER = currentBuild.getNumber()
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
@@ -31,10 +33,10 @@ pipeline {
 						target_rtf = "stage_entapi"
 						target_host = "stage-eapi-mulesoft.nonprod.nb01.local"
 					}	
-                    echo "All Variables....${brance_name}, ${target_rtf}, ${target_host}...." + env.TARGET_ENV					
+                    echo "All Variables....${brance_name}, ${target_rtf}, ${target_host}...." + env.TARGET_ENV + env.BRANCH_NAME1					
 				}
-				echo "Checkout the Code Repository..."
-				git  branch: "${brance_name}", credentialsId: "git.credentials", url: "https://github.com/sreeni72/testrepo.git"
+				//echo "Checkout the Code Repository..."
+				//git  branch: "${brance_name}", credentialsId: "git.credentials", url: "https://github.com/sreeni72/testrepo.git"
 			}
 		}
 	}
