@@ -10,8 +10,7 @@ hopipeline {
           steps {
               echo 'Pulling... ' + env.GIT_BRANCH
               echo 'Pulling... ' + env.BRANCH_NAME
-              echo 'env....' + env.TARGET_ENV
-              echo 'branch....' + env.branch
+              echo 'test env....' + env.TARGET_ENV             
             }
         }
     }
