@@ -3,18 +3,22 @@ pipeline {
         label '!windows'
     }
 
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
+   environment {
+    FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
+    GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
+  }
     }
 
     stages {
         stage('Build') {
+         
             steps {
-                echo "Database engine is ${DB_ENGINE}"
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                echo 'Pulling...' + env.BRANCH_NAME
+               script {
+                        def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                        echo 'Pulling... ' + ${BRANCH}
+                    }
                 echo 'Pulling... ' + env.GIT_BRANCH
+                echo 'Pulling... ' + ${env.GIT_BRANCH}
             }
         }
     }
