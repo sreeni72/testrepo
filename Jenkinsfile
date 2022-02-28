@@ -33,8 +33,8 @@ pipeline {
 					}	
                     echo "All Variables....${brance_name}, ${target_rtf}, ${target_host}...." + env.TARGET_ENV					
 				}
-				echo "Checkout the Code Repository..."
-				git  branch: "${brance_name}", credentialsId: "git.credentials", url: "https://github.com/sreeni72/testrepo.git"
+				//echo "Checkout the Code Repository..."
+				//git  branch: "${brance_name}", credentialsId: "git.credentials", url: "https://github.com/sreeni72/testrepo.git"
 			}
 		}
 	}
