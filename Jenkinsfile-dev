@@ -3,21 +3,13 @@ pipeline {
         label '!windows'
     }
 
-   environment {
-    FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
-    GIT_BRANCH1 = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
-    }
-
-    stages {
+      stages {
         stage('Build') {
          
             steps {
-               script {
-                        def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-                        echo 'Pulling... ' + ${BRANCH}
-                    }
+              
                 echo 'Pulling... ' + env.GIT_BRANCH
-                echo 'Pulling... ' + env.GIT_BRANCH1
+                
                 echo 'Pulling... ' + ${env.GIT_BRANCH}
             }
         }
