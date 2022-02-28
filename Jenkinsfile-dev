@@ -6,13 +6,11 @@ pipeline {
       stages {
         stage('Build') {
           steps {
-              script {                 
-                    def branch_nem = env.GIT_BRANCH
-                    if (branch_nem.contains("*/")) {
-                        branch_nem = branch_nem.split("\\*/")[1]
-                    }
-               }
-                echo 'Pulling... ' + branch_nem               
+              
+                
+                BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
+                
+                echo BRANCH_NAME
             }
         }
     }
