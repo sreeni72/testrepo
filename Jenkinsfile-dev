@@ -2,11 +2,14 @@ pipeline {
     agent {
         label '!windows'
     }
-
+      environment {
+         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+     } 
       stages {
         stage('Build') {
           steps {
               echo 'Pulling... ' + env.GIT_BRANCH
+              echo 'Pulling... ' + env.BRANCH_NAME
             }
         }
     }
