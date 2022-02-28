@@ -1,4 +1,4 @@
-pipeline {
+hopipeline {
     agent {
         label '!windows'
     }
@@ -10,8 +10,8 @@ pipeline {
           steps {
               echo 'Pulling... ' + env.GIT_BRANCH
               echo 'Pulling... ' + env.BRANCH_NAME
-              echo 'env....' + env.TARGET-ENV
-              ECHO 'branch....' + env.branch
+              echo 'env....' + env.TARGET_ENV
+              echo 'branch....' + env.branch
             }
         }
     }
