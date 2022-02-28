@@ -6,11 +6,7 @@ pipeline {
       stages {
         stage('Build') {
           steps {
-              
-                
-                BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
-                
-                echo BRANCH_NAME
+              echo 'Pulling... ' + env.GIT_BRANCH
             }
         }
     }
