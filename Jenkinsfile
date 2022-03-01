@@ -17,7 +17,7 @@ pipeline {
 	    stage("Checkout"){
 		    steps{
 			    checkout scm
-			    sh "rm -rf Readme.Md .gitignore .gitattributes .git"
+			    sh "rm -rf Readme.Md"
 		    }	    
 	    }
 	    
