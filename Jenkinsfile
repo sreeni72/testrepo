@@ -13,7 +13,15 @@ pipeline {
         
     }
     stages {
-		stage("Initialise Variables") {
+		
+	    stage("Checkout"){
+		    steps{
+			    checkout scm
+			    sh "rm -rf Readme.Md .gitignore .gitattributes .git"
+		    }	    
+	    }
+	    
+	    stage("Initialise Variables") {
 			steps {
 			   script{
 					if(env.BRANCH_NAME == "develop") {
