@@ -16,6 +16,7 @@ pipeline {
 		artifact_id = readMavenPom().getArtifactId()
 		version = readMavenPom().getVersion()
 		art_name = readMavenPom().getName()
+		report_file = "${WORKSPACE}/index.html"
 			   	    
 	    BUILD_NUMBER = currentBuild.getNumber()
         NEXUS_VERSION = "nexus3"
